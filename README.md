@@ -1,3 +1,3 @@
 # omniauth-engine-oauth2
 
-RomanBartusiakEngineOauth2Engine provider
+RomanBartusiakEngineOauth2Engine client
