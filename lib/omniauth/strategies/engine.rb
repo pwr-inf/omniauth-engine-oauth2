@@ -2,7 +2,7 @@ require "omniauth-oauth2"
 
 module OmniAuth
   module Strategies
-    class Engine < OmniAuth::Strategies::OAuth2
+    class EngineOauth2 < OmniAuth::Strategies::OAuth2
 
       option :name, "engine_oauth2"
 
@@ -26,6 +26,7 @@ module OmniAuth
 
       def raw_info
         @raw_info ||= access_token.get('/user').parsed
+        p @raw_info
       end
 
       
