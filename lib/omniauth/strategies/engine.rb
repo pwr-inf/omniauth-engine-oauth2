@@ -3,16 +3,18 @@ require "omniauth-oauth2"
 module OmniAuth
   module Strategies
     class Engine < OmniAuth::Strategies::OAuth2
-      option :token_params, {
-        :parse          => :json
-      }
+
+      option :name, "engine_oauth2"
 
       uid{ raw_info['username'] }
 
       info do
         {
-          :name => raw_info['principal']['first_name']
-          :email => raw_info['principal']['email']
+          name:       raw_info['principal']['name'] + raw_info['principal']['surname'],
+          email:      raw_info['principal']['email'],
+          nickname:   raw_info['principal']['username'],
+          first_name: raw_info['principal']['name'],
+          last_name:  raw_info['principal']['surname']
         }
       end
 
