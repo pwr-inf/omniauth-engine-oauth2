@@ -26,11 +26,13 @@ module OmniAuth
       end
 
       def token_params
+        p "token_params is ran"
         params = {:headers => {'Authorization' => authorization(@client.id, @client.secret, 'Basic' }
         options.token_params.merge(options_for("token")).merge(params)
       end
 
       def raw_info
+        p "raw_info is ran"
         @raw_info ||= access_token.post('/user').parsed
         p @raw_info
       end
