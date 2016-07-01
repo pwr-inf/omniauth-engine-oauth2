@@ -24,11 +24,19 @@ module OmniAuth
         }
       end
 
+      def token_params
+        params = {:headers => {'Authorization' => authorization(@client.id, @client.secret, 'Basic' }
+        options.token_params.merge(options_for("token")).merge(params)
+      end
+
       def raw_info
-        @raw_info ||= access_token.get('/user').parsed
+        @raw_info ||= access_token.post('/user').parsed
         p @raw_info
       end
 
+      def authorization(client_id, client_secret, header_format)
+        header_format + ' ' + Base64.encode64(client_id + ':' + client_secret).delete("\n")
+      end
       
     end
   end
