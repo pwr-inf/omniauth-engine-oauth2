@@ -14,7 +14,8 @@ module OmniAuth
           email:      raw_info['principal']['email'],
           nickname:   raw_info['principal']['username'],
           first_name: raw_info['principal']['name'],
-          last_name:  raw_info['principal']['surname']
+          last_name:  raw_info['principal']['surname'],
+          admin:      raw_info['principal']['userAuthorities'].include? "ROLE_ADMIN",
         }
       end
 
