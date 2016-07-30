@@ -33,7 +33,7 @@ module OmniAuth
 
       def raw_info
         p "raw_info is ran"
-        @raw_info ||= access_token.post('/user').parsed
+        @raw_info ||= access_token.get('/user', :params => {'access_token' => access_token..token }).parsed
         p @raw_info
       end
 
