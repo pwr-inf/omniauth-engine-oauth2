@@ -27,7 +27,7 @@ module OmniAuth
 
       def token_params
         p "token_params is ran"
-        params = {:headers => {'Authorization' => authorization(@client.id, @client.secret, 'Basic') }}
+        params = {:headers => {'Authorization' => authorization(client.id, client.secret, 'Basic') }}
         options.token_params.merge(options_for("token")).merge(params)
       end
 
