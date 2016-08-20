@@ -15,7 +15,7 @@ module OmniAuth
           nickname:   raw_info['principal']['username'],
           first_name: raw_info['principal']['name'],
           last_name:  raw_info['principal']['surname'],
-          admin:      raw_info['principal']['userAuthorities'].include? "ROLE_ADMIN",
+          admin:      raw_info['principal']['userAuthorities'].include?("ROLE_ADMIN")
         }
       end
 
@@ -27,7 +27,7 @@ module OmniAuth
 
       def token_params
         p "token_params is ran"
-        params = {:headers => {'Authorization' => authorization(@client.id, @client.secret, 'Basic' }
+        params = {:headers => {'Authorization' => authorization(@client.id, @client.secret, 'Basic') }}
         options.token_params.merge(options_for("token")).merge(params)
       end
 
