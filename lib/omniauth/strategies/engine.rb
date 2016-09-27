@@ -6,11 +6,11 @@ module OmniAuth
 
       option :name, "engine_oauth2"
 
-      uid{ raw_info['username'] }
+      uid{ raw_info['principal']['id'] }
 
       info do
         {
-          name:       raw_info['principal']['name'] + raw_info['principal']['surname'],
+          name:       raw_info['principal']['name'] + " " + raw_info['principal']['surname'],
           email:      raw_info['principal']['email'],
           nickname:   raw_info['principal']['username'],
           first_name: raw_info['principal']['name'],
